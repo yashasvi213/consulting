@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your 1:1 Consultation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 600px;
+            width: 100%;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .price-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .price-label {
+            font-size: 18px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .features {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .calendar-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .calendar-section h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .booking-buttons {
+            display: grid;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 18px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(240, 147, 251, 0.4);
+        }
+
+        .contact-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contact-info h4 {
+            color: #1976d2;
+            margin-bottom: 10px;
+        }
+
+        .whatsapp-btn {
+            background: #25d366;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128c7e;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .header, .content {
+                padding: 30px 20px;
+            }
+            
+            .price {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 1:1 Personal Consultation</h1>
+            <p>How to crack Google</p>
+        </div>
+        
+        <div class="content">
+            <div class="price-section">
+                <div class="price">₹149</div>
+                <div class="price-label">Less than your one burger</div>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">⏰</div>
+                    <div>
+                        <strong>60-minute session</strong><br>
+                        <small>Dedicated time for your questions</small>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💡</div>
+                    <div>
+                        <strong>Personalized advice</strong><br>
+                        <small>Solutions tailored to your specific situation</small>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📞</div>
+                    <div>
+                        <strong>Video/Audio call</strong><br>
+                        <small>Convenient online meeting</small>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📋</div>
+                    <div>
+                        <strong>Action plan</strong><br>
+                        <small>Clear next steps after our session</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="calendar-section">
+                <h3>📅 Book Your Session</h3>
+                <p>Choose your preferred booking method:</p>
+            </div>
+            
+            <div class="booking-buttons">
+                <a href="https://calendly.com/yashasvisharma1369/how-to-crack-google" class="btn btn-primary" target="_blank">
+                    📅 Book Free Session
+                </a>
+                <a href="https://wa.me/919876543210?text=Hi! I want to book Google consultation for ₹149. My payment method: UPI/Bank Transfer" class="btn btn-secondary" target="_blank">
+                    💳 Pay ₹149 via UPI & Book
+                </a>
+            </div>
+            
+            <div class="contact-info">
+                <h4>Need Help Booking?</h4>
+                <p>Contact me directly and I'll help you schedule</p>
+                <a href="https://wa.me/919876543210?text=Hi! I'd like to book a consultation session for ₹149" class="btn whatsapp-btn" target="_blank">
+                    📱 WhatsApp Me
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        // Add smooth scrolling and interaction effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click animation to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Create ripple effect
+                    const ripple = document.createElement('div');
+                    const rect = button.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.classList.add('ripple');
+                    
+                    button.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+
+        function payWithRazorpay() {
+            var options = {
+                "key": "rzp_test_1234567890", // Replace with your Razorpay key
+                "amount": "14900", // 149 * 100 (paisa)
+                "currency": "INR",
+                "name": "Google Interview Consultation",
+                "description": "1:1 Session - How to Crack Google",
+                "image": "https://via.placeholder.com/200x200?text=Google+Prep",
+                "handler": function (response){
+                    // Payment successful
+                    alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+                    
+                    // Send confirmation email and redirect to booking
+                    sendConfirmationEmail(response.razorpay_payment_id);
+                    
+                    // Redirect to Calendly after payment
+                    setTimeout(() => {
+                        window.open('https://calendly.com/yashasvisharma1369/how-to-crack-google', '_blank');
+                    }, 2000);
+                },
+                "prefill": {
+                    "name": "",
+                    "email": "",
+                    "contact": ""
+                },
+                "notes": {
+                    "address": "Google Interview Consultation"
+                },
+                "theme": {
+                    "color": "#667eea"
+                }
+            };
+            
+            var rzp1 = new Razorpay(options);
+            rzp1.on('payment.failed', function (response){
+                alert("Payment failed! Error: " + response.error.description);
+            });
+            rzp1.open();
+        }
+
+        function sendConfirmationEmail(paymentId) {
+            // This would typically be handled by your backend
+            // For now, we'll show instructions to the user
+            const emailContent = `
+                <div style="background: #f0f8f0; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h3>🎉 Payment Confirmed!</h3>
+                    <p>Payment ID: ${paymentId}</p>
+                    <p>You'll receive an email with:</p>
+                    <ul>
+                        <li>📖 Free Google Interview Guide (PDF)</li>
+                        <li>💻 Coding Practice Problems</li>
+                        <li>📋 System Design Cheatsheet</li>
+                        <li>🎯 Behavioral Questions Framework</li>
+                    </ul>
+                    <p>Please book your session now using the Calendly link that will open shortly.</p>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', `
+                <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center;">
+                    <div style="background: white; padding: 30px; border-radius: 15px; max-width: 500px; margin: 20px;">
+                        ${emailContent}
+                        <button onclick="this.parentElement.parentElement.remove()" style="background: #667eea; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 15px;">Close</button>
+                    </div>
+                </div>
+            `);
+        }
+    </script>
+</body>
+</html>
